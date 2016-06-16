@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,4 +21,38 @@ angular.module('starter', ['ionic'])
       StatusBar.styleDefault();
     }
   });
+})
+
+.controller('ExampleController', function($scope, $cordovaCapture) {
+
+  $scope.captureAudio = function() {
+    var options = { limit: 3, duration: 10 };
+
+    $cordovaCapture.captureAudio(options).then(function(audioData) {
+      // Success! Audio data is here
+    }, function(err) {
+      // An error occurred. Show a message to the user
+    });
+  }
+
+  $scope.captureImage = function() {
+    var options = { limit: 3 };
+
+    $cordovaCapture.captureImage(options).then(function(imageData) {
+      // Success! Image data is here
+    }, function(err) {
+      // An error occurred. Show a message to the user
+    });
+  }
+
+  $scope.captureVideo = function() {
+    var options = { limit: 3, duration: 15 };
+
+    $cordovaCapture.captureVideo(options).then(function(videoData) {
+      console.log('ExampleController.captureVideo success', videoData);
+    }, function(err) {
+      console.log('ExampleController.captureVideo failed', err);
+    });
+  }
+
 })
