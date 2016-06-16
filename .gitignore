@@ -3,4 +3,5 @@
 
 node_modules/
 platforms/
-plugins/
+cordova-plugin-*/
+ionic-plugin-*/
