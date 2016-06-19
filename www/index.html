@@ -35,10 +35,6 @@
         Take Video
       </button>
 
-      <video controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
-        <source src="img/smallVideo.mov" />
-      </video>
-
       <div ng-if="videoPath !== null">
         <video width="300" height="200" preload controls>
           <source ng-src="{{videoPath}}" />
