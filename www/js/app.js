@@ -25,8 +25,10 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
 .controller('ExampleController', function($scope, $cordovaCapture) {
 
+  $scope.videoPath = null;
+
   $scope.captureAudio = function() {
-    var options = { limit: 3, duration: 10 };
+    var options = { limit: 3, duration: 15 };
 
     $cordovaCapture.captureAudio(options).then(function(audioData) {
       // Success! Audio data is here
@@ -36,7 +38,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
   }
 
   $scope.captureImage = function() {
-    var options = { limit: 3 };
+    var options = { limit: 1 };
 
     $cordovaCapture.captureImage(options).then(function(imageData) {
       // Success! Image data is here
@@ -46,12 +48,13 @@ angular.module('starter', ['ionic', 'ngCordova'])
   }
 
   $scope.captureVideo = function() {
-    var options = { limit: 3, duration: 15 };
+    var options = { limit: 1, duration: 15 };
 
     $cordovaCapture.captureVideo(options).then(function(videoData) {
-      console.log('ExampleController.captureVideo success', videoData);
+      console.log('ExampleController.captureVideo success: ' + JSON.stringify(videoData));
+      $scope.videoPath = videoData[0].fullPath;
     }, function(err) {
-      console.log('ExampleController.captureVideo failed', err);
+      console.log('ExampleController.captureVideo failed: ' + JSON.stringify(err));
     });
   }
 
