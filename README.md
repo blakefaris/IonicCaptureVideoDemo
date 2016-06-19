@@ -89,3 +89,10 @@ http://stackoverflow.com/questions/20326504/cordova-ios-plugins-fail-after-build
 1. cordova build ios
 
 A better solution is do the recommended 'config.xml' changes.
+
+## Choosing an Existing Video
+This repo allows you to take a video and have that video playback.  
+If you want to choose and playback an existing video you'll want to use ``` cordova-plugin-camera ```.
+
+Refer to my other GitHub repo for an example of choosing and playing back an existing video.
+https://github.com/blakefaris/IonicCameraPluginDemo
