@@ -48,12 +48,16 @@ angular.module('starter', ['ionic', 'ngCordova'])
   }
 
   $scope.captureVideo = function() {
+    var tempVideoPath = $scope.videoPath;
+    $scope.videoPath = null;
     var options = { limit: 1, duration: 15 };
 
     $cordovaCapture.captureVideo(options).then(function(videoData) {
       console.log('ExampleController.captureVideo success: ' + JSON.stringify(videoData));
       $scope.videoPath = videoData[0].fullPath;
     }, function(err) {
+      // User may have clicked 'Cancel'
+      $scope.videoPath = tempVideoPath;
       console.log('ExampleController.captureVideo failed: ' + JSON.stringify(err));
     });
   }
